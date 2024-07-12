@@ -1,6 +1,17 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 function Navbar() {
+
+  const links = [
+    {to: "/", label: "Home"},
+    {to: "/about", label:"About"},
+    {to: "/projects", label:"Projects"},
+    {to: "/contacts", label:"Contacts"},
+
+  ]
+
+
   return (
     <div>
         <div className=' bg-white h-[90px] flex'>
@@ -16,11 +27,13 @@ function Navbar() {
 
            {/*Nav Links */}
            <div className=' ml-[500px] '>
+            
             <ul className=' flex gap-16 pt-[34px] text-sm font-bold uppercase text-gray-800'>
-              <li className=' hover:text-purple-500'>Home</li>
-              <li className=' hover:text-purple-500'>About</li>
-              <li className=' hover:text-purple-500'>Projects</li>
-              <li className=' hover:text-purple-500'>Contacts</li>
+              {links.map((link, index) => (
+              <NavLink to={link.to} key={index}>
+              <li className=' hover:text-purple-500'>{link.label}</li>
+              </NavLink>
+              ))}
             </ul>
 
            </div>
